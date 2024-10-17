@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>שכנים</title>
+  <link rel="stylesheet" href="neighbors_styles.css">
+</head>
+<body>
+  <h1 style="text-align: center;">רשימת שכנים</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>שם בעל דירה</th>
+        <th>מספר דירה</th>
+        <th>ת.ז</th>
+      </tr>
+    </thead>
+    <tbody id="table-body">
+      <!-- השורות יתווספו כאן על ידי JavaScript -->
+    </tbody>
+  </table>
+
+  <script src="neighbors_script.js"></script>
+  <script>
+    window.onload = () => {
+      const tableBody = document.getElementById("table-body");
+
+      neighbors.forEach(neighbor => {
+        const row = `<tr>
+          <td>${neighbor.name}</td>
+          <td>${neighbor.apartment}</td>
+          <td>${neighbor.id}</td>
+        </tr>`;
+        tableBody.innerHTML += row;
+      });
+    };
+  </script>
+</body>
+</html>

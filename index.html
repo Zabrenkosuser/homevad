@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>שאלון קבלה</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Hebrew:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<h1>מלא את הטופס ליצירת קבלה</h1>
+<form id="receiptForm">
+    <label>למי מיועד:</label>
+    <input type="text" id="recipient" required><br><br>
+
+    <label>ת.ז:</label>
+    <input type="text" id="idNumber" required><br><br>
+
+    <label>שם בעל הדירה:</label>
+    <input type="text" id="ownerName" required><br><br>
+
+    <h3>פריטים לתשלום:</h3>
+    <table id="itemsTable">
+        <thead>
+        <tr>
+            <th>פריט</th>
+            <th>כמות</th>
+            <th>סכום ליחידה</th>
+            <th>הסר</th>
+        </tr>
+        </thead>
+        <tbody id="itemsBody">
+        <tr>
+            <td><input type="text" class="itemName" required></td>
+            <td><input type="number" class="itemQuantity" value="1" min="1" required></td>
+            <td><input type="number" class="itemAmount" required></td>
+            <td><button type="button" class="removeItem">הסר</button></td>
+        </tr>
+        </tbody>
+    </table>
+    <button type="button" id="addItem">הוסף פריט</button><br><br>
+
+    <button type="submit">צור קבלה</button>
+</form>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
