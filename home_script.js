@@ -1,3 +1,3 @@
 function openReceiptPage() {
-  window.location.href = 'index.html'; // מחליף את החלון לדף הקבלה שהעלית
+  window.location.href = 'kabala.html'; // מחליף את החלון לדף הקבלה שהעלית
 }
