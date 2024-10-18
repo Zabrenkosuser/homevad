@@ -172,3 +172,32 @@ document.getElementById('receiptForm').addEventListener('submit', function(event
     // שמירת ה-PDF
     doc.save("קבלה.pdf");
 });
+
+// יצירת הקבלה ושמירתה ב-LocalStorage
+document.getElementById('receiptForm').addEventListener('submit', function (event) {
+    event.preventDefault();
+
+    const recipient = document.getElementById('recipient').value;
+    const idNumber = document.getElementById('idNumber').value;
+    const ownerName = document.getElementById('ownerName').value;
+    const apartmentNumber = document.getElementById('apartmentNumber').value;
+    const currentDate = new Date().toLocaleString();
+
+    // יצירת אובייקט קבלה
+    const receipt = {
+        name: recipient,
+        id: idNumber,
+        file: `receipt_${Date.now()}.pdf`, // שם קובץ דינמי להורדה
+        date: currentDate
+    };
+
+    // שמירת הקבלה ב-LocalStorage
+    let receipts = JSON.parse(localStorage.getItem('receipts')) || {};
+    if (!receipts[apartmentNumber]) {
+        receipts[apartmentNumber] = [];
+    }
+    receipts[apartmentNumber].push(receipt);
+    localStorage.setItem('receipts', JSON.stringify(receipts));
+
+    alert('קבלה נוצרה בהצלחה!');
+});
