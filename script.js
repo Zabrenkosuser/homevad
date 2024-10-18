@@ -1,3 +1,65 @@
+const owners = [
+    { name: "טוינה נתנאל", id: "314939091", apartment: "1" },
+    { name: "זברנקו כריסטופר", id: "327923314", apartment: "1" },
+    { name: "קריסט הבר גוזו", id: "6493599", apartment: "2" },
+    { name: "קריסט הבר ליביה", id: "64936008", apartment: "2" },
+    { name: "וייס דורה", id: "592647", apartment: "3" },
+    { name: "טווערסקי אסתר", id: "318069382", apartment: "4" },
+    { name: "טווערסקי לוי יצחק", id: "209824812", apartment: "4" },
+    { name: "אוליסקי אלברטו", id: "015892169", apartment: "5" },
+    { name: "אוליסקי שרמן אנה", id: "015892177", apartment: "5" },
+    { name: "שיתי ספירו", id: "031668379", apartment: "6" },
+    { name: "טניוק מריה", id: "312660095", apartment: "7" },
+    { name: "אנקוה עזיזה", id: "0988622", apartment: "8" },
+    { name: "בונדרנקו-גיל נינה", id: "304244478", apartment: "9" },
+    { name: "מור יעקב גל", id: "207334145", apartment: "10" },
+    { name: "צויבל אברהם דוד", id: "322961699", apartment: "11" },
+    { name: "שטול הדסה", id: "325064897", apartment: "11" },
+    { name: "יוסף הלאל", id: "318179959", apartment: "12" },
+    { name: "שקמונה חברה ממשלתית עירונית", id: " ", apartment: "13" },
+    { name: "עובדיה אליהו", id: "052026010", apartment: "14" },
+    { name: "שטנגר משה", id: "008757718", apartment: "15" },
+    { name: "בוברמן גריגורי", id: "321164204", apartment: "16" },
+    { name: "קליין שרה", id: "214431678", apartment: "17" },
+    { name: "לייפר אסתר מלכה", id: "207021403", apartment: "18" },
+    { name: "לייפר משולם זלמן", id: "313467227", apartment: "18" },
+    { name: "עזרזר בניה", id: "318384997", apartment: "19" },
+    { name: "עזרזר נופר", id: "209027879", apartment: "19" },
+    { name: "קרבץ מיכאל", id: "312905649", apartment: "20" },
+    { name: "מילמן מריאנה", id: "308809151", apartment: "21" },
+    { name: "אפראימוב אלינה", id: "304093172", apartment: "22" },
+    { name: "יערי גל", id: "208852996", apartment: "23" },
+    { name: "בורוצקי אדית", id: "311824494", apartment: "24" },
+    { name: "פחמנוב פבל", id: "304024193", apartment: "25" },
+    { name: "פחמנוב לילה", id: "304024235", apartment: "25" },
+    { name: "אוסמן טופז טובה", id: "316221258", apartment: "26" },
+    { name: "אוסמן שמעון", id: "204314199", apartment: "26" },
+    { name: "אגייב מרינה", id: "314266149", apartment: "27" },
+    { name: "מנצגריצקי אלוירה", id: "306589482", apartment: "28" },
+    { name: "גולדברג בחטייר", id: "316718352", apartment: "29" },
+    { name: "גולדברג טניה", id: "316718394", apartment: "29" },
+    { name: "ליבסון רפאל", id: "310199831", apartment: "30" },
+    { name: "ליבסון ליודמילה", id: "310199872", apartment: "30" },
+    { name: "שקמונה חברה ממשלתית עירונית", id: " ", apartment: "31" },
+    { name: "דדוב ליודמילה", id: "303868152", apartment: "32" },
+];
+// הוספת אפשרויות ל-select
+const ownerSelect = document.getElementById('ownerSelect');
+owners.forEach(owner => {
+    const option = document.createElement('option');
+    option.value = JSON.stringify(owner);
+    option.textContent = `${owner.name} - דירה ${owner.apartment}`;
+    ownerSelect.appendChild(option);
+});
+// עדכון הטופס בעת בחירה
+ownerSelect.addEventListener('change', function() {
+    const selectedOwner = JSON.parse(this.value);
+    document.getElementById('recipient').value = selectedOwner.name;
+    document.getElementById('idNumber').value = selectedOwner.id;
+    document.getElementById('ownerName').value = selectedOwner.apartment;
+    document.getElementById('apartmentNumber').value = selectedOwner.apartment;
+});
+
 // הוספת שורות נוספות לטבלה
 document.getElementById('addItem').addEventListener('click', function() {
     const tableBody = document.getElementById('itemsBody');
